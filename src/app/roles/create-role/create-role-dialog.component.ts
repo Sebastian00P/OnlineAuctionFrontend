@@ -12,14 +12,15 @@ import {
   RoleDto,
   PermissionDto,
   CreateRoleDto,
-  PermissionDtoListResultDto
+  PermissionDtoListResultDto,
 } from '@shared/service-proxies/service-proxies';
 import { forEach as _forEach, map as _map } from 'lodash-es';
 
 @Component({
-  templateUrl: 'create-role-dialog.component.html'
+  templateUrl: 'create-role-dialog.component.html',
 })
-export class CreateRoleDialogComponent extends AppComponentBase
+export class CreateRoleDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   role = new RoleDto();
@@ -32,7 +33,7 @@ export class CreateRoleDialogComponent extends AppComponentBase
   constructor(
     injector: Injector,
     private _roleService: RoleServiceProxy,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
   ) {
     super(injector);
   }
@@ -49,7 +50,7 @@ export class CreateRoleDialogComponent extends AppComponentBase
   setInitialPermissionsStatus(): void {
     _map(this.permissions, (item) => {
       this.checkedPermissionsMap[item.name] = this.isPermissionChecked(
-        item.name
+        item.name,
       );
     });
   }
@@ -81,17 +82,15 @@ export class CreateRoleDialogComponent extends AppComponentBase
     role.init(this.role);
     role.grantedPermissions = this.getCheckedPermissions();
 
-    this._roleService
-      .create(role)
-      .subscribe(
-        () => {
-          this.notify.info(this.l('SavedSuccessfully'));
-          this.bsModalRef.hide();
-          this.onSave.emit();
-        },
-        () => {
-          this.saving = false;
-        }
-      );
+    this._roleService.create(role).subscribe(
+      () => {
+        this.notify.info(this.l('SavedSuccessfully'));
+        this.bsModalRef.hide();
+        this.onSave.emit();
+      },
+      () => {
+        this.saving = false;
+      },
+    );
   }
 }

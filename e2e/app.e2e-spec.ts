@@ -1,14 +1,14 @@
-import { OnlineAuctionTemplatePage } from './app.po';
+import { OnlineAuctionTemplatePage } from "./app.po";
 
-describe('OnlineAuction App', function() {
+describe("OnlineAuction App", function () {
   let page: OnlineAuctionTemplatePage;
 
   beforeEach(() => {
     page = new OnlineAuctionTemplatePage();
   });
 
-  it('should display message saying app works', () => {
+  it("should display message saying app works", () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual("app works!");
   });
 });

@@ -1,0 +1,93 @@
+<form
+  class="form-horizontal"
+  autocomplete="off"
+  #createAuctionModal="ngForm"
+  (ngSubmit)="save()"
+>
+  <abp-modal-header
+    [title]="'Create New Auction' | localize"
+    (onCloseClick)="bsModalRef.hide()"
+  ></abp-modal-header>
+  <div class="modal-body">
+    <!--    <tabset>-->
+    <!--      <tab [heading]="'Auction Details' | localize" class="pt-3 px-2">-->
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="name">
+        {{ "Title" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="name"
+          id="name"
+          required
+          maxlength="32"
+          [(ngModel)]="auction.title"
+          #nameModel="ngModel"
+          #nameEl
+        />
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="description">
+        {{ "Description" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="description"
+          id="description"
+          maxlength="32"
+          [(ngModel)]="auction.description"
+          #surnameModel="ngModel"
+          #surnameEl
+        />
+      </div>
+    </div>
+      <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="photo">
+        {{ "Photo" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="text"
+          class="form-control"
+          name="photo"
+          id="photo"
+          maxlength="32"
+          [(ngModel)]="auction.photo"
+          #surnameModel="ngModel"
+          #surnameEl
+        />
+      </div>
+    </div>
+    <div class="form-group row required">
+      <label class="col-md-3 col-form-label" for="userName">
+        {{ "Price" | localize }}
+      </label>
+      <div class="col-md-9">
+        <input
+          type="number"
+          class="form-control"
+          name="userName"
+          id="userName"
+          required
+          minlength="2"
+          maxlength="32"
+          [(ngModel)]="auction.price"
+          #userNameModel="ngModel"
+          #userNameEl
+        />
+      </div>
+    </div>
+    <!--      </tab>-->
+    <!--    </tabset>-->
+  </div>
+  <abp-modal-footer
+    [cancelDisabled]="saving"
+    [saveDisabled]="!createAuctionModal.form.valid || saving"
+    (onCancelClick)="bsModalRef.hide()"
+  ></abp-modal-footer>
+</form>

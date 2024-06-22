@@ -3,21 +3,26 @@ import {
   Injector,
   OnInit,
   EventEmitter,
-  Output
+  Output,
 } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { forEach as _forEach, includes as _includes, map as _map } from 'lodash-es';
+import {
+  forEach as _forEach,
+  includes as _includes,
+  map as _map,
+} from 'lodash-es';
 import { AppComponentBase } from '@shared/app-component-base';
 import {
   UserServiceProxy,
   UserDto,
-  RoleDto
+  RoleDto,
 } from '@shared/service-proxies/service-proxies';
 
 @Component({
-  templateUrl: './edit-user-dialog.component.html'
+  templateUrl: './edit-user-dialog.component.html',
 })
-export class EditUserDialogComponent extends AppComponentBase
+export class EditUserDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   user = new UserDto();
@@ -30,7 +35,7 @@ export class EditUserDialogComponent extends AppComponentBase
   constructor(
     injector: Injector,
     public _userService: UserServiceProxy,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
   ) {
     super(injector);
   }
@@ -49,7 +54,7 @@ export class EditUserDialogComponent extends AppComponentBase
   setInitialRolesStatus(): void {
     _map(this.roles, (item) => {
       this.checkedRolesMap[item.normalizedName] = this.isRoleChecked(
-        item.normalizedName
+        item.normalizedName,
       );
     });
   }
@@ -85,7 +90,7 @@ export class EditUserDialogComponent extends AppComponentBase
       },
       () => {
         this.saving = false;
-      }
+      },
     );
   }
 }

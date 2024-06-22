@@ -4,12 +4,12 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import {
   PagedListingComponentBase,
-  PagedRequestDto
+  PagedRequestDto,
 } from '@shared/paged-listing-component-base';
 import {
   RoleServiceProxy,
   RoleDto,
-  RoleDtoPagedResultDto
+  RoleDtoPagedResultDto,
 } from '@shared/service-proxies/service-proxies';
 import { CreateRoleDialogComponent } from './create-role/create-role-dialog.component';
 import { EditRoleDialogComponent } from './edit-role/edit-role-dialog.component';
@@ -20,7 +20,7 @@ class PagedRolesRequestDto extends PagedRequestDto {
 
 @Component({
   templateUrl: './roles.component.html',
-  animations: [appModuleAnimation()]
+  animations: [appModuleAnimation()],
 })
 export class RolesComponent extends PagedListingComponentBase<RoleDto> {
   roles: RoleDto[] = [];
@@ -29,7 +29,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
   constructor(
     injector: Injector,
     private _rolesService: RoleServiceProxy,
-    private _modalService: BsModalService
+    private _modalService: BsModalService,
   ) {
     super(injector);
   }
@@ -37,7 +37,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
   list(
     request: PagedRolesRequestDto,
     pageNumber: number,
-    finishedCallback: Function
+    finishedCallback: Function,
   ): void {
     request.keyword = this.keyword;
 
@@ -46,7 +46,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
       .pipe(
         finalize(() => {
           finishedCallback();
-        })
+        }),
       )
       .subscribe((result: RoleDtoPagedResultDto) => {
         this.roles = result.items;
@@ -66,11 +66,11 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
               finalize(() => {
                 abp.notify.success(this.l('SuccessfullyDeleted'));
                 this.refresh();
-              })
+              }),
             )
             .subscribe(() => {});
         }
-      }
+      },
     );
   }
 
@@ -89,7 +89,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
         CreateRoleDialogComponent,
         {
           class: 'modal-lg',
-        }
+        },
       );
     } else {
       createOrEditRoleDialog = this._modalService.show(
@@ -99,7 +99,7 @@ export class RolesComponent extends PagedListingComponentBase<RoleDto> {
           initialState: {
             id: id,
           },
-        }
+        },
       );
     }
 

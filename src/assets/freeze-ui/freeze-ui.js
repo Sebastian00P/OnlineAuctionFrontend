@@ -35,7 +35,8 @@
   };
 
   window.FreezeUI = function () {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var options =
+      arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     addFreezedItem(options.selector);
     var delay = normalizeFreezeDelay(options.delay);
     setTimeout(function () {
@@ -62,7 +63,8 @@
   };
 
   window.UnFreezeUI = function () {
-    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+    var options =
+      arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     removeFreezedItem(options.selector);
     var delay = normalizeFreezeDelay(options.delay) + 250;
     setTimeout(function () {

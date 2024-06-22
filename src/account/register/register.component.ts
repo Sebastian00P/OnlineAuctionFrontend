@@ -5,14 +5,14 @@ import { AppComponentBase } from '@shared/app-component-base';
 import {
   AccountServiceProxy,
   RegisterInput,
-  RegisterOutput
+  RegisterOutput,
 } from '@shared/service-proxies/service-proxies';
 import { accountModuleAnimation } from '@shared/animations/routerTransition';
 import { AppAuthService } from '@shared/auth/app-auth.service';
 
 @Component({
   templateUrl: './register.component.html',
-  animations: [accountModuleAnimation()]
+  animations: [accountModuleAnimation()],
 })
 export class RegisterComponent extends AppComponentBase {
   model: RegisterInput = new RegisterInput();
@@ -22,7 +22,7 @@ export class RegisterComponent extends AppComponentBase {
     injector: Injector,
     private _accountService: AccountServiceProxy,
     private _router: Router,
-    private authService: AppAuthService
+    private authService: AppAuthService,
   ) {
     super(injector);
   }
@@ -34,7 +34,7 @@ export class RegisterComponent extends AppComponentBase {
       .pipe(
         finalize(() => {
           this.saving = false;
-        })
+        }),
       )
       .subscribe((result: RegisterOutput) => {
         if (!result.canLogin) {
@@ -45,7 +45,8 @@ export class RegisterComponent extends AppComponentBase {
 
         // Autheticate
         this.saving = true;
-        this.authService.authenticateModel.userNameOrEmailAddress = this.model.userName;
+        this.authService.authenticateModel.userNameOrEmailAddress =
+          this.model.userName;
         this.authService.authenticateModel.password = this.model.password;
         this.authService.authenticate(() => {
           this.saving = false;

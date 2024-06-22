@@ -4,7 +4,7 @@ import {
   Injector,
   Renderer2,
   ElementRef,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { AppComponentBase } from '@shared/app-component-base';
@@ -12,10 +12,11 @@ import { AbpValidationError } from './abp-validation.api';
 
 @Component({
   selector: 'abp-validation-summary',
-  templateUrl: './abp-validation.summary.component.html'
+  templateUrl: './abp-validation.summary.component.html',
 })
-export class AbpValidationSummaryComponent extends AppComponentBase implements OnInit {
-
+export class AbpValidationSummaryComponent
+  extends AppComponentBase
+  implements OnInit {
   defaultValidationErrors: Partial<AbpValidationError>[] = [
     { name: 'required', localizationKey: 'ThisFieldIsRequired' },
     {
@@ -47,7 +48,10 @@ export class AbpValidationSummaryComponent extends AppComponentBase implements O
   @Input() control: AbstractControl;
   @Input() controlEl: ElementRef;
 
-  constructor(injector: Injector, public _renderer: Renderer2) {
+  constructor(
+    injector: Injector,
+    public _renderer: Renderer2,
+  ) {
     super(injector);
   }
 
@@ -57,8 +61,8 @@ export class AbpValidationSummaryComponent extends AppComponentBase implements O
         (defaultValidationError) =>
           !val.find(
             (customValidationError) =>
-              customValidationError.name === defaultValidationError.name
-          )
+              customValidationError.name === defaultValidationError.name,
+          ),
       );
       this.validationErrors = <AbpValidationError[]>[...defaults, ...val];
     }

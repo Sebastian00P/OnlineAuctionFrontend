@@ -6,7 +6,11 @@ import {
   Output,
 } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
-import { forEach as _forEach, includes as _includes, map as _map } from 'lodash-es';
+import {
+  forEach as _forEach,
+  includes as _includes,
+  map as _map,
+} from 'lodash-es';
 import { AppComponentBase } from '@shared/app-component-base';
 import {
   RoleServiceProxy,
@@ -14,13 +18,14 @@ import {
   RoleDto,
   PermissionDto,
   RoleEditDto,
-  FlatPermissionDto
+  FlatPermissionDto,
 } from '@shared/service-proxies/service-proxies';
 
 @Component({
-  templateUrl: 'edit-role-dialog.component.html'
+  templateUrl: 'edit-role-dialog.component.html',
 })
-export class EditRoleDialogComponent extends AppComponentBase
+export class EditRoleDialogComponent
+  extends AppComponentBase
   implements OnInit {
   saving = false;
   id: number;
@@ -34,7 +39,7 @@ export class EditRoleDialogComponent extends AppComponentBase
   constructor(
     injector: Injector,
     private _roleService: RoleServiceProxy,
-    public bsModalRef: BsModalRef
+    public bsModalRef: BsModalRef,
   ) {
     super(injector);
   }
@@ -53,7 +58,7 @@ export class EditRoleDialogComponent extends AppComponentBase
   setInitialPermissionsStatus(): void {
     _map(this.permissions, (item) => {
       this.checkedPermissionsMap[item.name] = this.isPermissionChecked(
-        item.name
+        item.name,
       );
     });
   }
@@ -91,7 +96,7 @@ export class EditRoleDialogComponent extends AppComponentBase
       },
       () => {
         this.saving = false;
-      }
+      },
     );
   }
 }

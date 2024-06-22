@@ -19,28 +19,26 @@ import { TenantChangeComponent } from './tenant/tenant-change.component';
 import { TenantChangeDialogComponent } from './tenant/tenant-change-dialog.component';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        FormsModule,
-        HttpClientModule,
-        HttpClientJsonpModule,
-        SharedModule,
-        ServiceProxyModule,
-        AccountRoutingModule,
-        ModalModule.forChild()
-    ],
-    declarations: [
-        AccountComponent,
-        LoginComponent,
-        RegisterComponent,
-        AccountLanguagesComponent,
-        AccountHeaderComponent,
-        AccountFooterComponent,
-        // tenant
-        TenantChangeComponent,
-        TenantChangeDialogComponent,
-    ]
+  imports: [
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    HttpClientJsonpModule,
+    SharedModule,
+    ServiceProxyModule,
+    AccountRoutingModule,
+    ModalModule.forChild(),
+  ],
+  declarations: [
+    AccountComponent,
+    LoginComponent,
+    RegisterComponent,
+    AccountLanguagesComponent,
+    AccountHeaderComponent,
+    AccountFooterComponent,
+    // tenant
+    TenantChangeComponent,
+    TenantChangeDialogComponent,
+  ],
 })
-export class AccountModule {
-
-}
+export class AccountModule {}

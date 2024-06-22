@@ -2,16 +2,17 @@ import {
   Component,
   ChangeDetectionStrategy,
   Injector,
-  OnInit
+  OnInit,
 } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
   selector: 'sidebar-user-panel',
   templateUrl: './sidebar-user-panel.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SidebarUserPanelComponent extends AppComponentBase
+export class SidebarUserPanelComponent
+  extends AppComponentBase
   implements OnInit {
   shownLoginName = '';
 

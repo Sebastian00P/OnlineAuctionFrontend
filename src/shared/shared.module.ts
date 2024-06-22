@@ -19,41 +19,37 @@ import { BusyDirective } from './directives/busy.directive';
 import { EqualValidator } from './directives/equal-validator.directive';
 
 @NgModule({
-    imports: [
-        CommonModule,
-        RouterModule,
-        NgxPaginationModule
-    ],
-    declarations: [
-        AbpPaginationControlsComponent,
-        AbpValidationSummaryComponent,
-        AbpModalHeaderComponent,
-        AbpModalFooterComponent,
-        LocalizePipe,
-        BusyDirective,
-        EqualValidator
-    ],
-    exports: [
-        AbpPaginationControlsComponent,
-        AbpValidationSummaryComponent,
-        AbpModalHeaderComponent,
-        AbpModalFooterComponent,
-        LocalizePipe,
-        BusyDirective,
-        EqualValidator
-    ]
+  imports: [CommonModule, RouterModule, NgxPaginationModule],
+  declarations: [
+    AbpPaginationControlsComponent,
+    AbpValidationSummaryComponent,
+    AbpModalHeaderComponent,
+    AbpModalFooterComponent,
+    LocalizePipe,
+    BusyDirective,
+    EqualValidator,
+  ],
+  exports: [
+    AbpPaginationControlsComponent,
+    AbpValidationSummaryComponent,
+    AbpModalHeaderComponent,
+    AbpModalFooterComponent,
+    LocalizePipe,
+    BusyDirective,
+    EqualValidator,
+  ],
 })
 export class SharedModule {
-    static forRoot(): ModuleWithProviders<SharedModule> {
-        return {
-            ngModule: SharedModule,
-            providers: [
-                AppSessionService,
-                AppUrlService,
-                AppAuthService,
-                AppRouteGuard,
-                LayoutStoreService
-            ]
-        };
-    }
+  static forRoot(): ModuleWithProviders<SharedModule> {
+    return {
+      ngModule: SharedModule,
+      providers: [
+        AppSessionService,
+        AppUrlService,
+        AppAuthService,
+        AppRouteGuard,
+        LayoutStoreService,
+      ],
+    };
+  }
 }

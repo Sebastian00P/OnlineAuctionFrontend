@@ -5,7 +5,7 @@ import { appModuleAnimation } from '@shared/animations/routerTransition';
 @Component({
   templateUrl: './about.component.html',
   animations: [appModuleAnimation()],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AboutComponent extends AppComponentBase {
   constructor(injector: Injector) {

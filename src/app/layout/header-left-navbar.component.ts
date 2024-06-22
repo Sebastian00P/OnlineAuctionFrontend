@@ -4,7 +4,7 @@ import { LayoutStoreService } from '@shared/layout/layout-store.service';
 @Component({
   selector: 'header-left-navbar',
   templateUrl: './header-left-navbar.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderLeftNavbarComponent implements OnInit {
   sidebarExpanded: boolean;
