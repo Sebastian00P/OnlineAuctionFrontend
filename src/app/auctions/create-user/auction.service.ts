@@ -25,10 +25,10 @@ export class AuctionService {
         );
     }
 
-    getAll(
-
-    ) {
-        return this.http.get<AuctionDto[]>(
+    getAll() {
+        return this.http.get<{
+            result: AuctionDto[];
+        }>(
             this.baseUrl + '/api/services/app/Auction/GetAll',
         );
     }

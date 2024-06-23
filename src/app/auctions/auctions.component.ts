@@ -58,10 +58,10 @@ export class AuctionsComponent extends PagedListingComponentBase<AuctionDto> {
         }),
       )
       .subscribe((auctions) => {
-        this.auctions = auctions;
+        this.auctions = auctions.result;
         this.showPaging({
-            items: auctions,
-            totalCount: auctions.length,
+            items: auctions.result,
+            totalCount: auctions.result.length,
         }, pageNumber);
       });
   }
