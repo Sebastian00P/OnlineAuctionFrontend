@@ -23,6 +23,7 @@
     "@angular/router": "^17.3.9",
     "@aspnet/signalr": "^1.1.4",
     "@fortawesome/fontawesome-free": "^6.4.2",
+    "@ungap/structured-clone": "^1.2.0",
     "abp-ng2-module": "10.0.0",
     "abp-web-resources": "^5.9.1",
     "admin-lte-css-only": "^3.2.0",
@@ -65,5 +66,6 @@
     "typescript": "5.2.2",
     "webpack-bundle-analyzer": "^4.10.1"
   },
-  "angular-cli": {}
+  "angular-cli": {},
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

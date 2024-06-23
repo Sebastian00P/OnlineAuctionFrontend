@@ -1,10 +1,6 @@
-import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
+import {Inject, Injectable, Optional} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {
-    API_BASE_URL,
-    AuctionDto,
-    UserDto,
-} from '@shared/service-proxies/service-proxies';
+import {API_BASE_URL, AuctionDto,} from '@shared/service-proxies/service-proxies';
 
 @Injectable()
 export class AuctionService {
@@ -44,4 +40,10 @@ export class AuctionService {
         );
     }
 
+    update(auction: AuctionDto) {
+        return this.http.put(
+            this.baseUrl + '/api/services/app/Auction/Update',
+            auction,
+        );
+    }
 }

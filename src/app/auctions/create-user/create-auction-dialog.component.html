@@ -5,7 +5,7 @@
   (ngSubmit)="save()"
 >
   <abp-modal-header
-    [title]="'Create New Auction' | localize"
+    [title]="isEdit ? 'Update Auction' : 'Create New Auction' | localize"
     (onCloseClick)="bsModalRef.hide()"
   ></abp-modal-header>
   <div class="modal-body">
@@ -61,8 +61,8 @@
           />
           <img *ngIf="auction.photo" [src]=" auction.photo"  class="img-fluid mb-2" />
           <div class="d-flex">
-              <button class="btn btn-default" (click)="uploadPhoto()">Upload</button>
-              <button class="btn btn-danger ml-3" (click)="auction.photo = ''" *ngIf="auction.photo">Delete</button>
+              <button type="button" class="btn btn-default" (click)="uploadPhoto()">Upload</button>
+              <button type="button" class="btn btn-danger ml-3" (click)="auction.photo = ''" *ngIf="auction.photo">Delete</button>
           </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import {PagedListingComponentBase, PagedRequestDto} from 'shared/paged-listing-c
 import {AuctionDto} from '@shared/service-proxies/service-proxies';
 import {CreateAuctionDialogComponent} from './create-user/create-auction-dialog.component';
 import {AuctionService} from '@app/auctions/create-user/auction.service';
+import structuredClone from '@ungap/structured-clone';
+
 
 class PagedAuctionsRequestDto extends PagedRequestDto {
   keyword: string;
@@ -81,7 +83,7 @@ export class AuctionsComponent extends PagedListingComponentBase<AuctionDto> {
     );
   }
 
-  private showCreateOrEditUserDialog(id?: number): void {
+  private async showCreateOrEditUserDialog(id?: number) {
     let createOrEditUserDialog: BsModalRef;
     if (!id) {
       createOrEditUserDialog = this._modalService.show(
@@ -96,7 +98,7 @@ export class AuctionsComponent extends PagedListingComponentBase<AuctionDto> {
         {
           class: 'modal-lg',
           initialState: {
-            // id: id,
+            auction: structuredClone(this.auctions.find(x => x.id === id)),
           },
         },
       );

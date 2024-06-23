@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Injector, OnInit, Output,} from '@angular/core';
+import {Component, EventEmitter, Inject, Injectable, Injector, OnInit, Output, } from '@angular/core';
 import {BsModalRef} from 'ngx-bootstrap/modal';
 import {AppComponentBase} from '@shared/app-component-base';
 import {AuctionDto} from '@shared/service-proxies/service-proxies';
@@ -13,6 +13,8 @@ export class CreateAuctionDialogComponent
     saving = false;
     auction = new AuctionDto();
 
+    isEdit = false;
+
     @Output() onSave = new EventEmitter<any>();
 
     constructor(
@@ -24,12 +26,18 @@ export class CreateAuctionDialogComponent
     }
 
     ngOnInit(): void {
+        setTimeout(() => {
+            this.isEdit = !!this.bsModalRef.content.auction;
+        }, 100);
     }
 
     save(): void {
         this.saving = true;
+        const request = this.bsModalRef.content.auction ?
+            this._auctionsService.update(this.auction) :
+            this._auctionsService.create(this.auction);
 
-        this._auctionsService.create(this.auction).subscribe(
+        request.subscribe(
             () => {
                 this.notify.info(this.l('SavedSuccessfully'));
                 this.bsModalRef.hide();
@@ -39,6 +47,7 @@ export class CreateAuctionDialogComponent
                 this.saving = false;
             }
         );
+
     }
 
     uploadPhoto() {
