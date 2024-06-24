@@ -27,13 +27,13 @@ export class CreateAuctionDialogComponent
 
     ngOnInit(): void {
         setTimeout(() => {
-            this.isEdit = !!this.bsModalRef.content.auction;
+            this.isEdit = !!this.bsModalRef.content.auction && Object.keys(this.bsModalRef.content.auction).length > 0;
         }, 100);
     }
 
     save(): void {
         this.saving = true;
-        const request = this.bsModalRef.content.auction ?
+        const request = this.isEdit ?
             this._auctionsService.update(this.auction) :
             this._auctionsService.create(this.auction);
 

@@ -10,7 +10,6 @@ export class AuctionService {
         private http: HttpClient,
         @Optional() @Inject(API_BASE_URL) baseUrl?: string,
     ) {
-        console.log('baseUrl', baseUrl);
         this.baseUrl = baseUrl !== undefined && baseUrl !== null ? baseUrl : '';
     }
 
@@ -34,7 +33,7 @@ export class AuctionService {
             this.baseUrl + '/api/services/app/Auction/Delete',
             {
                 params: {
-                    id: id + '',
+                    input: id + '',
                 },
             },
         );
