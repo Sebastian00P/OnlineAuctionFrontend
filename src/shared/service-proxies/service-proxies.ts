@@ -4613,7 +4613,7 @@ export class AuctionDto implements IAuctionDto {
   photo: string;
   price: number;
 
-  constructor(data?: IAuctionDto) {
+  constructor(data?: any) {
     if (data) {
       for (var property in data) {
         if (data.hasOwnProperty(property)) {

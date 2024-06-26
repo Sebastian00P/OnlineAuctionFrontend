@@ -3,7 +3,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AbpHttpInterceptor } from 'abp-ng2-module';
 
 import * as ApiServiceProxies from './service-proxies';
-import { AuctionService } from '@app/auctions/create-user/auction.service';
+import { AuctionResourceService } from '@app/auctions/create-user/auction-resource.service';
 
 @NgModule({
   providers: [
@@ -13,7 +13,7 @@ import { AuctionService } from '@app/auctions/create-user/auction.service';
     ApiServiceProxies.UserServiceProxy,
     ApiServiceProxies.TokenAuthServiceProxy,
     ApiServiceProxies.AccountServiceProxy,
-    AuctionService,
+    AuctionResourceService,
     ApiServiceProxies.ConfigurationServiceProxy,
     { provide: HTTP_INTERCEPTORS, useClass: AbpHttpInterceptor, multi: true },
   ],

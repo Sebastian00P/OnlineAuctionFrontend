@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Inject, Injectable, Injector, OnInit, Output, } from '@angular/core';
+import {Component, EventEmitter, Inject, Injectable, Injector, OnInit, Output,} from '@angular/core';
 import {BsModalRef} from 'ngx-bootstrap/modal';
 import {AppComponentBase} from '@shared/app-component-base';
 import {AuctionDto} from '@shared/service-proxies/service-proxies';
-import {AuctionService} from '@app/auctions/create-user/auction.service';
+import {AuctionResourceService} from '@app/auctions/create-user/auction-resource.service';
 
 @Component({
     templateUrl: './create-auction-dialog.component.html',
@@ -11,7 +11,7 @@ export class CreateAuctionDialogComponent
     extends AppComponentBase
     implements OnInit {
     saving = false;
-    auction = new AuctionDto();
+    auction = new AuctionDto({description: '---'});
 
     isEdit = false;
 
@@ -19,7 +19,7 @@ export class CreateAuctionDialogComponent
 
     constructor(
         injector: Injector,
-        public _auctionsService: AuctionService,
+        public _auctionsService: AuctionResourceService,
         public bsModalRef: BsModalRef,
     ) {
         super(injector);
@@ -27,7 +27,7 @@ export class CreateAuctionDialogComponent
 
     ngOnInit(): void {
         setTimeout(() => {
-            this.isEdit = !!this.bsModalRef.content.auction && Object.keys(this.bsModalRef.content.auction).length > 0;
+            this.isEdit = !!this.bsModalRef.content.auction && Object.keys(this.bsModalRef.content.auction).length > 1;
         }, 100);
     }
 

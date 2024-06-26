@@ -5,7 +5,7 @@ import {appModuleAnimation} from '@shared/animations/routerTransition';
 import {PagedListingComponentBase, PagedRequestDto} from 'shared/paged-listing-component-base';
 import {AuctionDto} from '@shared/service-proxies/service-proxies';
 import {CreateAuctionDialogComponent} from './create-user/create-auction-dialog.component';
-import {AuctionService} from '@app/auctions/create-user/auction.service';
+import {AuctionResourceService} from '@app/auctions/create-user/auction-resource.service';
 import structuredClone from '@ungap/structured-clone';
 
 
@@ -25,7 +25,7 @@ export class AuctionsComponent extends PagedListingComponentBase<AuctionDto> {
 
   constructor(
     injector: Injector,
-    private _auctionService: AuctionService,
+    private _auctionService: AuctionResourceService,
     private _modalService: BsModalService,
   ) {
     super(injector);
@@ -51,15 +51,7 @@ export class AuctionsComponent extends PagedListingComponentBase<AuctionDto> {
     finishedCallback: Function,
   ): void {
 
-    this._auctionService
-      .getAll(
-      )
-      .pipe(
-        finalize(() => {
-          finishedCallback();
-        }),
-      )
-      .subscribe((auctions) => {
+    this._auctionService.getAll().pipe(finalize(() => finishedCallback())).subscribe((auctions) => {
         this.auctions = auctions.result;
         this.showPaging({
             items: auctions.result,

@@ -3,7 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {API_BASE_URL, AuctionDto,} from '@shared/service-proxies/service-proxies';
 
 @Injectable()
-export class AuctionService {
+export class AuctionResourceService {
     private baseUrl: string;
 
     constructor(
